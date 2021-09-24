@@ -52,13 +52,25 @@ Based on her contribution to this environmental protection fund, Jo - and everyo
 3. User can view how much they have contributed to each recipient and fund
 4. User can vote on how the funds they have raised are allocated
 
-# Potential Technologies
+# Potential Technologies and Tools
 
+### Web
 - [React](https://reactjs.org/) User interface
+- [web3.js](https://github.com/ChainSafe/web3.js) Ethereum Javascript API
 - [MetaMask](https://metamask.io/) Crypto wallet
+
+### Smart Contracts
 - [Solidity](https://github.com/ethereum/solidity) Smart contract language
 - [Open Zeppelin](https://openzeppelin.com/contracts/) Smart contract library, particularly their [`PaymentSplitter`](https://docs.openzeppelin.com/contracts/3.x/api/payment#PaymentSplitter) utility
+
+### Ethereum
 - [Truffle](https://github.com/trufflesuite/truffle) Development environment, testing framework, and asset pipeline for Ethereum
 - [Ganache](https://www.trufflesuite.com/ganache) Local blockchain development
+- [Gas Now](https://www.gasnow.org/) ETH Gas Price forecast system
+
+### DAO
 - [Aragon](https://aragon.org/dao) DAO framework
+- [Zodiac](https://github.com/gnosis/zodiac) Library for composable DAO tooling
+
+### Other
 - [IPFS](https://ipfs.io/) Decentralized file storage
