@@ -40,17 +40,39 @@ Based on her contribution to this environmental protection fund, Jo - and everyo
 
 <br/>
 
-## Contract Creator
-1. User logs in with crypto wallet (i.e. MetaMask) 
-2. User makes payment to cover gas fees required to create the contract
-3. User creates a contract that defines the recipients and the percentage they will each receive
-4. Each of the recipients can log in with their crypto wallet accounts to view how much they have acrued and request payout. 
+## Actions
+- [x] User can send ETH to the contract address
+- [x] User can view how much they have contributed
+- [x] User can view their share of the contract funds
+- [ ] User can request release of their allotted funds to their address
 
-## Payer
-1. User logs in with crypto wallet
-2. User makes payment
-3. User can view how much they have contributed to each recipient and fund
-4. User can vote on how the funds they have raised are allocated
+## Future Iterations
+- Upgradeability
+  - Allow an admin to update payees and their shares
+  - Allow an admin to deploy a contract
+- User experience
+  - Implement something like Gas Station Network so users can pay tx fees using fiat
+  - It would be nice if contributors could view the amount they have contributed to the contract
+    - TODO: Decide via Etherscan? or via a traditional database?
+- Marketplace
+  -  Where contributors can browse contracts
+  -  Where people can deploy a contract, defining payees and their shares
+- DAO / tokenomics
+  - Governance tokens minted based on a % of their contribution
+    - The fund is another payee defined during deployment
+  - Tokens used to allow a user to vote on how those funds are distributed
+  - TODO: decide on DAO and/or decision-making framework
+  - TODO: think about the design of such a token
+
+   
+<br/>
+
+# Get Started Locally
+1. Start local blockchain using `ganache-cli`
+2. Enter `truffle console` in terminal to open up a Truffle console
+3. In another terminal, `cd client && npm run start` to start the React app
+
+<br/>
 
 # Potential Technologies and Tools
 
@@ -67,10 +89,15 @@ Based on her contribution to this environmental protection fund, Jo - and everyo
 - [Truffle](https://github.com/trufflesuite/truffle) Development environment, testing framework, and asset pipeline for Ethereum
 - [Ganache](https://www.trufflesuite.com/ganache) Local blockchain development
 - [Gas Now](https://www.gasnow.org/) ETH Gas Price forecast system
+- [GSN](https://opengsn.org/) Ethereum Gas Station Network allows DApp users to interact with contracts without needing ETH for tx fees
 
 ### DAO
 - [Aragon](https://aragon.org/dao) DAO framework
 - [Zodiac](https://github.com/gnosis/zodiac) Library for composable DAO tooling
 
-### Other
+### Infrastructure
 - [IPFS](https://ipfs.io/) Decentralized file storage
+- [Infura](https://infura.io/) Ethereum node connectivity
+- [Swarm](https://www.ethswarm.org/) Decentralised storage and Ethereum node **connectivity**
+- [Pinata](https://www.pinata.cloud/) Interface for IPFS
+- [Polygon](https://polygon.technology/) Multichain Ethereum ecosystem
