@@ -12,6 +12,10 @@ contract SolidarityEconomy is PaymentSplitter {
     payable {
       description = _description;
   }
+
+  /**
+   * @dev Make a payment to the contract
+   */
   function makePayment() payable public {
     require(msg.value > 0);
     addContributor(_msgSender(), msg.value);
