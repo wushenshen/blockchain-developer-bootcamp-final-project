@@ -5,15 +5,15 @@ import "@openzeppelin/contracts/finance/PaymentSplitter.sol";
 
 contract SolidarityEconomy is PaymentSplitter {
   mapping(address => uint256) private _contributors;
-    string private description;
+  string private description;
 
-    constructor(address[] memory _payees, uint256[] memory _shares, string memory _description)
+  constructor(address[] memory _payees, uint256[] memory _shares, string memory _description)
     PaymentSplitter(_payees, _shares)
     payable {
       description = _description;
   }
-
-  receive() external override payable {
+  function makePayment() payable public {
+    require(msg.value > 0);
     addContributor(_msgSender(), msg.value);
     emit PaymentReceived(_msgSender(), msg.value);
   }

@@ -84,25 +84,18 @@ class App extends Component {
   releaseFunds = async () => {
     const { contract, currentAddress } = this.state;
     try {
-      console.log('trying ==>', currentAddress)
-      await contract.methods.release("0x6fCCfeA9ba83D5644182687B0D545Da21b4d00B2").call();
-      console.log('never? ==>', currentAddress)
+      await contract.methods.release(currentAddress).send({ from: currentAddress });
     } catch (error) {
-      console.log('error ==>', error)
+      alert(error.message);
     }
   }
 
   sendFunds = async (amount) => {
     const { contract, currentAddress, web3 } = this.state;
     try {
-      await web3.eth.sendTransaction({
-        to: contract._address,
-        from: currentAddress,
-        value: web3.utils.toWei(amount, "ether"),
-      });
+      await contract.methods.makePayment().send({ from: currentAddress, value: web3.utils.toWei(amount, "ether") });
     } catch (error) {
       alert(error.message);
-      console.log('error =>', error.message)
     } finally {
       this.setState({ amount: 0 })
     }
@@ -240,7 +233,6 @@ const UserOptions = ({ amountReleased, contractBalance, contribution, currentAdd
 
   return (
     <div className="userData">
-      <div>Your address is {currentAddress}</div>
       <div className="userOptions">
       {isPayee &&
         <Box
