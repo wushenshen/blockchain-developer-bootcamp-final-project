@@ -44,16 +44,13 @@ Based on her contribution to this environmental protection fund, Jo - and everyo
 - [x] User can send ETH to the contract address
 - [x] User can view how much they have contributed
 - [x] User can view their share of the contract funds
-- [ ] User can request release of their allotted funds to their address
+- [x] User can request release of their allotted funds to their address
 
 ## Future Iterations
 - Upgradeability
   - Allow an admin to update payees and their shares
-  - Allow an admin to deploy a contract
 - User experience
   - Implement something like Gas Station Network so users can pay tx fees using fiat
-  - It would be nice if contributors could view the amount they have contributed to the contract
-    - TODO: Decide via Etherscan? or via a traditional database?
 - Marketplace
   -  Where contributors can browse contracts
   -  Where people can deploy a contract, defining payees and their shares

@@ -6,11 +6,9 @@ dotenv.config();
 const mnemonic = process.env.MNEMONIC;
 
 module.exports = {
-  // See <http://truffleframework.com/docs/advanced/configuration>
-  // to customize your Truffle configuration!
   compilers: {
     solc: {
-      version: '0.8.0',
+      version: "0.8.0",
     }
   },
   contracts_build_directory: path.join(__dirname, "client/src/contracts"),
