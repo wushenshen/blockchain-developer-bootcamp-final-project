@@ -74,6 +74,7 @@ Based on her contribution to this environmental protection fund, Jo - and everyo
 
 
 ## Make a few payments
+- Open a new terminal window
 - `truffle console`
 - `let instance = await SolidarityEconomy.deployed()`
 - `instance.makePayment.sendTransaction({ from: accounts[5], value: web3.utils.toWei("10", "ether")})`
