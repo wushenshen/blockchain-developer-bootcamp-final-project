@@ -118,7 +118,7 @@ class App extends Component {
       <Flex>
         
         <div className="App">
-          <h1>Solidarity Economy</h1>
+          <h1>Payment Splitter</h1>
 
           {!this.state.web3
             ? <div>Connect to your Kovan wallet.</div>
