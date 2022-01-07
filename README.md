@@ -1,4 +1,13 @@
-# Project Description
+# Blockchain Developer Bootcamp Final Project
+
+## Deployed Url
+
+[https://final-project-swu.vercel.app/](https://final-project-swu.vercel.app/)
+
+<br />
+
+## Description
+
 This decentralized application (DApp) facilitates payments that are programatically distributed among separate accounts. These payments may represent:
 
 - royalties paid to license artistic and creative works
@@ -42,7 +51,9 @@ Based on her contribution to this environmental protection fund, Jo - and everyo
 ## Contracts
 - `yarn install`
 - `ganache-cli -m="bone great morning certain cheese process sleep salt unusual crime pigeon half"`
-- `truffle migrate`
+- In a separate console tab
+  - Run `truffle migrate`
+  - To test, run `truffle test`
 
 ## Front end
 - `cd client`
@@ -104,7 +115,7 @@ TODO
 
 <br/>
 
-# Address for certification
+# Public address for certification
 `0xe92717f9a02b8309baee41e96602e8b63babc66c` 
 
 <br/>
