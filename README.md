@@ -69,7 +69,7 @@ Based on her contribution to this environmental protection fund, Jo - and everyo
 ## Front end
 - `cd client`
 - `yarn install`
-- `npm run start`
+- `yarn start`
 - Open [`http://localhost:3000/`](http://localhost:3000/)
 
 
