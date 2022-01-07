@@ -18,9 +18,9 @@ module.exports = {
       port: "8545",
       network_id: "*"
     },
-    rinkeby: {
+    kovan: {
       provider: () => new HDWalletProvider(mnemonic, process.env.INFURA_URL),
-      network_id: "4",
+      network_id: "42",
       gas: 5500000
     },
   }
