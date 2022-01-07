@@ -35,11 +35,11 @@ contract("SolidarityEconomy", (accounts) => {
   describe("makePayment", () => {
     it("correctly tracks contributors and their contributions", async () => {
       await instance.makePayment.sendTransaction({ from: account4, value: 1 });
-      assert.equal(await instance.getAmountContributed(account4), 1);
+      assert.equal(await instance.getAccountContribution(account4), 1);
       await instance.makePayment.sendTransaction({ from: account4, value: 2 });
-      assert.equal(await instance.getAmountContributed(account4), 3);
+      assert.equal(await instance.getAccountContribution(account4), 3);
       await instance.makePayment.sendTransaction({ from: account5, value: 5 });
-      assert.equal(await instance.getAmountContributed(account5), 5);
+      assert.equal(await instance.getAccountContribution(account5), 5);
     });
   });
 

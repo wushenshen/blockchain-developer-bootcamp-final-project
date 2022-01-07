@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Button, Card, Flex, Box } from 'rebass';
 import theme from './theme';
 import { ThemeProvider } from '@emotion/react';
@@ -66,7 +66,7 @@ class App extends Component {
   refreshBalances = async (contract, web3) => {
     const currentAddress = getCurrentAddress(web3);
     const shares = await contract.methods.shares(currentAddress).call();
-    const contribution = this.fromWei(await contract.methods.getAmountContributed(currentAddress).call());
+    const contribution = this.fromWei(await contract.methods.getAccountContribution(currentAddress).call());
     const amountReleased = this.fromWei(await contract.methods.released(currentAddress).call());
     const contractBalance = this.fromWei(await web3.eth.getBalance(contract._address));
     const totalReleased = this.fromWei(await contract.methods.totalReleased().call())
@@ -112,31 +112,31 @@ class App extends Component {
   }
 
   render() {
-    if (!this.state.web3) {
-      return <div>Loading Web3, accounts, and contract...</div>;
-    }
     const { amount, amountReleased, contractBalance, contribution, currentAddress, shares, totalReleased, description } = this.state;
 
     return (
       <Flex>
+        
         <div className="App">
           <h1>Solidarity Economy</h1>
 
-          <Description text={description} />
-
-          <BalancesInfo contractBalance={contractBalance} totalReleased={totalReleased} />
-
-          <PaymentForm amount={amount} onChange={this.handleChange} onSubmit={this.handleSubmit} />
-
-          <UserOptions
-            amountReleased={amountReleased}
-            contractBalance={contractBalance}
-            contribution={contribution}
-            currentAddress={currentAddress}
-            shares={shares}
-            totalReleased={totalReleased}
-            releaseFunds={this.releaseFunds}
-          />
+          {!this.state.web3
+            ? <div>Connect to your Kovan wallet.</div>
+            : (<Fragment>
+                <Description text={description} />
+                <BalancesInfo contractBalance={contractBalance} totalReleased={totalReleased} />
+                <PaymentForm amount={amount} onChange={this.handleChange} onSubmit={this.handleSubmit} />
+                <UserOptions
+                  amountReleased={amountReleased}
+                  contractBalance={contractBalance}
+                  contribution={contribution}
+                  currentAddress={currentAddress}
+                  shares={shares}
+                  totalReleased={totalReleased}
+                  releaseFunds={this.releaseFunds}
+                />
+              </Fragment>)
+          }
 
         </div>
       </Flex>
@@ -257,7 +257,7 @@ const UserOptions = ({ amountReleased, contractBalance, contribution, currentAdd
               : <span>You have already withdrawn your shares.</span>
             }
           </div>
-          <Button
+          { couldBeWithdrawn > 0 && (<Button
             onClick={releaseFunds}
             sx={{
               bg: theme.colors.secondary,
@@ -270,7 +270,7 @@ const UserOptions = ({ amountReleased, contractBalance, contribution, currentAdd
             }}
           >
             Withdraw Funds
-          </Button>
+          </Button>)}
         </Box>
       }
       {isContributor &&

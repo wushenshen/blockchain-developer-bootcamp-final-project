@@ -1,4 +1,4 @@
-var SolidarityEconomy = artifacts.require("./SolidarityEconomy.sol");
+const SolidarityEconomy = artifacts.require("./SolidarityEconomy.sol");
 
 module.exports = async function(deployer) {
   let accounts = await web3.eth.getAccounts()
