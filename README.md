@@ -48,6 +48,17 @@ Based on her contribution to this environmental protection fund, Jo - and everyo
 
 # Get Started Locally
 
+## Directory structure
+- `client` - React front end
+- `contracts` - Solidity smart contracts deployed to Kovan testnet
+- `migrations` - Migration files for deploying contracts
+- `test` - Unit tests for SolidarityEconomy smart contract
+
+## Dependencies
+- Node.js
+- Truffle and Ganache
+- Yarn
+
 ## Contracts
 - `yarn install`
 - `ganache-cli -m="bone great morning certain cheese process sleep salt unusual crime pigeon half"`
@@ -111,11 +122,11 @@ module.exports = async function(deployer) {
 <br/>
 
 # Screencast Link
-TODO
+[https://youtu.be/PGC3kXSYNck](https://youtu.be/PGC3kXSYNck)
 
 <br/>
 
-# Public address for certification
+# Public Ethereum address for certification
 `0xe92717f9a02b8309baee41e96602e8b63babc66c` 
 
 <br/>
