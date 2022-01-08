@@ -123,7 +123,7 @@ module.exports = async function(deployer) {
 <br/>
 
 # Screencast Link
-[https://youtu.be/PGC3kXSYNck](https://youtu.be/PGC3kXSYNck)
+[https://youtu.be/mAEi9zlrbCo](https://youtu.be/mAEi9zlrbCo)
 
 <br/>
 
