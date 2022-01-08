@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Banner = ({ text }) => {
+const Banner = ({ text, onClick }) => {
   return (
-    <div className="banner">
+    <div className="banner" onClick={onClick}>
       {text}
     </div>
   )

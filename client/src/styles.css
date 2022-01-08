@@ -23,6 +23,7 @@ body {
   text-align: center;
   width: 100%;
   display: block;
+  cursor: pointer;
 }
 
 .info {

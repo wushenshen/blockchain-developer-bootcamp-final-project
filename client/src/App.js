@@ -4,12 +4,14 @@ import theme from './theme';
 import { ThemeProvider } from '@emotion/react';
 import SolidarityEconomyContract from "./contracts/SolidarityEconomy.json";
 import getWeb3 from "./getWeb3";
+
+import { fromWei } from './utils/fromWei';
 import { getCurrentAddress } from "./utils/currentAddress";
+import { reloadWindow } from './utils/reload';
 
 import "./styles.css";
 import Balances from './components/Balances';
 import Banner from './components/Banner';
-import Connect from './components/Connect';
 import Description from './components/Description';
 import Info from './components/Info';
 import PaymentForm from './components/PaymentForm';
@@ -45,6 +47,16 @@ class App extends Component {
         await this.refreshBalances(instance, web3);
       });
 
+      if (window.ethereum) {
+        window.ethereum.on('accountsChanged', (accounts) => {
+          reloadWindow();
+        });
+  
+        window.ethereum.on('chainChanged', (chainId) => {
+          reloadWindow();
+        });
+      }
+
       const description = await instance.methods.getDescription().call();
 
       this.setState({
@@ -64,33 +76,27 @@ class App extends Component {
 
   changeAccounts = async () => {
     const { contract, web3 } = this.state;
-    await this.refreshBalances(contract, web3)
-  }
-
-  fromWei = (amount) => {
-    const { web3 } = this.state;
-    if (amount && typeof amount !== 'string') {
-      amount = amount.toString()
-      return web3.utils.fromWei(amount, 'ether');
+    if (contract && web3) {
+      await this.refreshBalances(contract, web3)
     }
-    return web3.utils.fromWei(amount, 'ether');
   }
 
   refreshBalances = async (contract, web3) => {
     const currentAddress = getCurrentAddress(web3);
+    
+    const amountReleased = await contract.methods.released(currentAddress).call();
+    const contractBalance = await web3.eth.getBalance(contract._address);
+    const contribution = await contract.methods.getAccountContribution(currentAddress).call();
     const shares = await contract.methods.shares(currentAddress).call();
-    const contribution = this.fromWei(await contract.methods.getAccountContribution(currentAddress).call());
-    const amountReleased = this.fromWei(await contract.methods.released(currentAddress).call());
-    const contractBalance = this.fromWei(await web3.eth.getBalance(contract._address));
-    const totalReleased = this.fromWei(await contract.methods.totalReleased().call())
+    const totalReleased = await contract.methods.totalReleased().call();
 
     this.setState({
-      amountReleased,
-      contractBalance,
-      contribution,
+      amountReleased: fromWei(web3, amountReleased),
+      contractBalance: fromWei(web3, contractBalance),
+      contribution: fromWei(web3, contribution),
       currentAddress,
       shares,
-      totalReleased,
+      totalReleased: fromWei(web3, totalReleased),
     });
   }
 
@@ -137,14 +143,13 @@ class App extends Component {
 
     return (
       <Fragment>
-        {!this.state.web3 && <Banner text="Connect to your Kovan wallet" />}
+        {!this.state.web3 && <Banner text="Connect to your Kovan wallet" onClick={reloadWindow} />}
         <Flex>
           <div className="container">
             <h1>Payment Splitter </h1>
             <Info />
             {this.state.web3 && (
               <div className="main">
-                <Connect onClick={this.changeAccounts} />
 
                 <Description text={description} />
 
