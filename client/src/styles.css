@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Lekton&display=swap');
+
+body {
+  font-family: 'Lekton', sans-serif;
+}
+
+.container {
+  text-align: center;
+  width: 700px;
+  margin: 20px auto 0;
+  line-height: 1.25em;
+}
+
+.header h1 {
+  display: inline;
+}
+
+.banner {
+  background-color: #2ec4b6;
+  line-height: 25px;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+
+.info {
+  width: 500px;
+  margin: 15px auto 20px;
+  padding: 10px 20px;
+  font-size: 14px;
+  line-height: 16px;
+  z-index: 2;
+  background: white;
+  border: 1px dashed #ff9f1c;
+  border-radius: 5px;
+}
+
+.main {
+  position: relative;
+  top: 0px;
+}
+
+.userData {
+  display: block;
+}
+
+.userOptions {
+  display: flex;
+  text-align: left;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+button {
+  display: block !important;
+  margin: 10px auto !important;
+  cursor: pointer;
+}
+
+button:hover, button:active {
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, .7);
+}
+
+.loading {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 25px;
+  width: 100%;
+  color: #2ec4b6;
+}
