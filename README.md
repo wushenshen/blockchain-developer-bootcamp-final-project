@@ -89,36 +89,6 @@ Based on her contribution to this environmental protection fund, Jo - and everyo
     - 1: `0x34874fabad506b8530c7baa190e9a7ac40a3e2a10cdf3ac8aa3a7754a43d0cbc`
     - 2: `0x5c6165db43192a3d955e4ac366f93fc2659e146a0bd114aeedf925acf42c9db1`
     - 3: `0xdb92c7f2919c46e6acb8542295b200d1a34c9a86c9eafc4a52dd31a21811fc47`
-- You may copy the following migration into a new migration file and run `migrate` if you would like to see how upgrades work.
-## Migration to update payees
-Copy the following code to a new migration file
-```
-const SolidarityEconomy = artifacts.require("./SolidarityEconomy.sol");
-
-module.exports = async function(deployer) {
-  let accounts = await web3.eth.getAccounts()
-  const existing = await SolidarityEconomy.deployed();
-  const existingBalance = await web3.eth.getBalance(existing.address);
-  const contributors = await existing.getContributorAddresses();
-
-  let updated;
-
-  const payees = [accounts[1], accounts[3]];
-  const shares = [40, 60];
-  const description = "An example of a smart contract intended to further the solidarity economy, after payees have changed.";
-
-  if (existingBalance > 0 || !!contributors.length) {
-    updated = await deployer.deploy(SolidarityEconomy, payees, shares, description);
-    let amounts = []
-    contributors.forEach(async c => amounts.push(await existing.getAccountContribution(c)))
-    await existing.transferBalance(updated.address);
-    await updated.migrateData(contributors, amounts);
-  } else {
-    updated = await deployer.deploy(SolidarityEconomy, payees, shares, description);
-  }
-};
-
-```
 
 <br/>
 
