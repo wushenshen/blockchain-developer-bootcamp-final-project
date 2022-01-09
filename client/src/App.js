@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from "react";
 import { Flex } from 'rebass';
-import theme from './theme';
-import { ThemeProvider } from '@emotion/react';
 import SolidarityEconomyContract from "./contracts/SolidarityEconomy.json";
 import getWeb3 from "./getWeb3";
 import { getCurrentAddress } from "./utils/currentAddress";
@@ -179,6 +177,4 @@ class App extends Component {
 
 
 export default props =>
-  <ThemeProvider theme={theme}>
     <App {...props} />
-  </ThemeProvider>
