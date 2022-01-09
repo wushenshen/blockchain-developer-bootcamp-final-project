@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "^11.7.1",
     "@truffle/hdwallet-provider": "^2.0.0",
     "@web3-react/core": "^6.1.9",
     "dotenv": "^10.0.0",
