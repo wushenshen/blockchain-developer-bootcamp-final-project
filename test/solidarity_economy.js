@@ -14,6 +14,13 @@ contract("SolidarityEconomy", (accounts) => {
   const getBalance = web3.eth.getBalance;
   const toWei = amount => web3.utils.toWei(amount, "ether");
   const fromWei = amount => web3.utils.fromWei(amount, "ether");
+
+  const createNewContract = async () => {
+    const newPayees = [account1, account3];
+    const newShares = [40, 60];
+    const newDescription = 'Example of new description';
+    return await SolidarityEconomy.new(newPayees, newShares, newDescription);
+  }
   
   beforeEach(async () => {
     instance = await SolidarityEconomy.new([account1, account2, account3], shares, description);
@@ -127,11 +134,7 @@ contract("SolidarityEconomy", (accounts) => {
       const contributions = [];
       contributors.forEach(async c => contributions.push(await instance.getAccountContribution(c)));
       
-      const newPayees = [account1, account3];
-      const newShares = [40, 60];
-      const newDescription = 'Example of new description';
-      const updated = await SolidarityEconomy.new(newPayees, newShares, newDescription);
-      
+      const updated = await createNewContract();
       await updated.migrateData(contributors, contributions);
       const newContributors = await updated.getContributorAddresses();
 
@@ -146,10 +149,7 @@ contract("SolidarityEconomy", (accounts) => {
     });
 
     it("throws an error when migrating data if caller is not the owner", async () => {
-      const newPayees = [account1, account3];
-      const newShares = [40, 60];
-      const newDescription = 'Example of new description';
-      const updated = await SolidarityEconomy.new(newPayees, newShares, newDescription);
+      const updated = await createNewContract();
       try {
         await updated.migrateData([],[], { from: account4 });
       } catch (e) {
@@ -164,10 +164,18 @@ contract("SolidarityEconomy", (accounts) => {
       await instance.makePayment.sendTransaction({ from: account5, value: toWei("3") });
       const balance = await getBalance(instance.address);
 
-      const newPayees = [account1, account3];
-      const newShares = [40, 60];
-      const newDescription = 'Example of new description';
-      const updated = await SolidarityEconomy.new(newPayees, newShares, newDescription);
+      const updated = await createNewContract();
+
+      await instance.transferBalance(updated.address, { from: owner });
+      const transferredBalance = await getBalance(updated.address);
+
+      assert.equal(balance, transferredBalance);
+    });
+
+    it("operates as expected when there is no balance", async () => {
+      const balance = await getBalance(instance.address);
+
+      const updated = await createNewContract();
 
       await instance.transferBalance(updated.address, { from: owner });
       const transferredBalance = await getBalance(updated.address);
@@ -176,10 +184,7 @@ contract("SolidarityEconomy", (accounts) => {
     });
 
     it("throws an error when transferring balance if caller is not the owner", async () => {
-      const newPayees = [account1, account3];
-      const newShares = [40, 60];
-      const newDescription = 'Example of new description';
-      const updated = await SolidarityEconomy.new(newPayees, newShares, newDescription);
+      const updated = await createNewContract();
       try {
         await instance.transferBalance(updated.address, { from: account4 });
       } catch (e) {
