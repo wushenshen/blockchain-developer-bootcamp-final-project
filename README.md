@@ -4,6 +4,9 @@
 
 [https://final-project-swu.vercel.app/](https://final-project-swu.vercel.app/)
 
+### Kovan Faucet
+[https://faucets.chain.link/kovan](https://faucets.chain.link/kovan)
+
 <br />
 
 ## Description
