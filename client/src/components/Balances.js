@@ -20,7 +20,7 @@ const Balances = ({ contractBalance, totalReleased }) => {
     >
       {contractBalance && <div>Current balance: {contractBalance} ETH</div>}
       {totalReleased && <div>Total released: {totalReleased} ETH</div>}
-      {totalReleased && <div>Total contributed: {roundSum(contractBalanc,totalReleased)} ETH</div>}
+      {totalReleased && <div>Total contributed: {roundSum(contractBalance,totalReleased)} ETH</div>}
     </Box>
   )
 }
