@@ -15,10 +15,11 @@ const Description = ({ text }) => {
         marginY: 10,
         textAlign: 'center',
         justifyContent: 'center',
-        fontStyle: 'italic',
       }}
     >
-      {text}
+      <strong>
+        Contract Description: <em>{text}</em>
+      </strong>.
     </Card>
   )
 }

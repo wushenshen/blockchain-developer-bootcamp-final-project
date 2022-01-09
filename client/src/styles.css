@@ -28,6 +28,7 @@ body {
 
 .info {
   width: 500px;
+  max-width: 100%;
   margin: 15px auto 20px;
   padding: 10px 20px;
   font-size: 14px;
@@ -36,6 +37,7 @@ body {
   background: white;
   border: 1px dashed #ff9f1c;
   border-radius: 5px;
+  text-align: left;
 }
 
 .main {

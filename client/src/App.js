@@ -147,7 +147,7 @@ class App extends Component {
         <Flex>
           <div className="container">
             <h1>Payment Splitter </h1>
-            <Info />
+            {!this.state.web3 && <Info />}
             {this.state.web3 && (
               <div className="main">
 
