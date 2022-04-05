@@ -1,13 +1,15 @@
-# Blockchain Developer Bootcamp Final Project
+# Payment Splitting Dapp
 
-## Deployed Url
+## Background & Inspiration
+My intention is to explore and further alternative economic models, particuarly the solidarity economy, a new paradigm for an economic system that centers community ownership and democratic governance for political, cultural, and economic power. This work is inspired by [Art.coop](https://art.coop/), an initiative led by artists and cultural workers.
 
-[https://final-project-swu.vercel.app/](https://final-project-swu.vercel.app/)
+<br/>
 
-### Kovan Faucet
-[https://faucets.chain.link/kovan](https://faucets.chain.link/kovan)
+Another new economic model, proposed by Kate Raworth, is [doughtnut economics](https://www.kateraworth.com/doughnut/), which describes the economy as comprised of not only the market and state, but also of households which nurture each of us and the commons which we all share. This economy is embedded within society and the living world. There is simulatenously a social foundation that must be met in order for each of us to thrive and an ecological ceiling that, when surpassed, irreparably damages our planetary systems. Within these two is an area (shaped as a donut) which represents the safe and just space for humanity. I propose these dimensions as a useful framework for thinking about what sort of areas need funding.
 
-<br />
+ <img src="https://economicsdetective.com/wp-content/uploads/2017/03/doughnut.jpg" style="width: 400px; display: block; margin: 0 auto;" />
+
+<br/>
 
 ## Description
 
@@ -42,10 +44,10 @@ Based on her contribution to this environmental protection fund, Jo - and everyo
 <br/>
 
 ## Actions
-- [x] User can send ETH to the contract address
-- [x] User can view how much they have contributed
-- [x] User can view their share of the contract funds
-- [x] User can request release of their allotted funds
+- User can send ETH to the contract address
+- User can view how much they have contributed
+- User can view their share of the contract funds
+- User can request release of their allotted funds
    
 <br/>
 
@@ -95,16 +97,6 @@ Based on her contribution to this environmental protection fund, Jo - and everyo
 
 <br/>
 
-# Screencast Link
-[https://youtu.be/mAEi9zlrbCo](https://youtu.be/mAEi9zlrbCo)
-
-<br/>
-
-# Public Ethereum address for certification
-`0xe92717f9a02b8309baee41e96602e8b63babc66c` 
-
-<br/>
-
 # Technology Stack
 
 ### Web
@@ -124,17 +116,6 @@ Based on her contribution to this environmental protection fund, Jo - and everyo
 - [Infura](https://infura.io/) Ethereum node connectivity
 
 <br />
-
-# Background & Inspiration
-My intention is to explore and further alternative economic models, particuarly the solidarity economy, a new paradigm for an economic system that centers community ownership and democratic governance for political, cultural, and economic power. This work is inspired by [Art.coop](https://art.coop/), an initiative led by artists and cultural workers.
-
-<br/>
-
-Another new economic model, proposed by Kate Raworth, is [doughtnut economics](https://www.kateraworth.com/doughnut/), which describes the economy as comprised of not only the market and state, but also of households which nurture each of us and the commons which we all share. This economy is embedded within society and the living world. There is simulatenously a social foundation that must be met in order for each of us to thrive and an ecological ceiling that, when surpassed, irreparably damages our planetary systems. Within these two is an area (shaped as a donut) which represents the safe and just space for humanity. I propose these dimensions as a useful framework for thinking about what sort of areas need funding.
-
- <img src="https://economicsdetective.com/wp-content/uploads/2017/03/doughnut.jpg" style="width: 400px; display: block; margin: 0 auto;" />
-
-<br/>
 
 # Notes for Future Iterations
 - User experience
